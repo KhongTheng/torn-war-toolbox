@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Torn War Toolbox</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <i class="ti ti-shield-bolt"></i>
+        <span>War Toolbox</span>
+        <span class="version">v2</span>
+      </div>
+      <div class="topbar-actions">
+        <button id="notify-btn" class="btn" onclick="toggleNotifications()"><i class="ti ti-bell"></i> Alerts off</button>
+        <button id="autorefresh-btn" class="btn" onclick="toggleAutoRefresh()"><i class="ti ti-player-play"></i> Auto-refresh</button>
+        <button class="btn btn-primary" onclick="loadData()"><i class="ti ti-refresh"></i> Refresh now</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <div class="setup-card" id="setup-panel">
+      <div class="setup-title"><i class="ti ti-key"></i> API Configuration</div>
+      <div class="setup-grid">
+        <div class="field">
+          <label>Torn API Key</label>
+          <input type="password" id="api-key-input" placeholder="Your Torn API key" />
+        </div>
+        <div class="field">
+          <label>Your Faction ID</label>
+          <input type="text" id="faction-id-input" placeholder="e.g. 37426" />
+        </div>
+      </div>
+      <button class="btn btn-primary btn-load" onclick="loadData()">
+        <i class="ti ti-player-play"></i> Load war data
+      </button>
+      <p class="setup-note">Your API key is never stored or sent anywhere except directly to api.torn.com</p>
+    </div>
+
+    <div id="error-area"></div>
+
+    <div class="refresh-bar" id="refresh-bar" style="display:none">
+      <span id="refresh-label">Next refresh in 60s</span>
+      <div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:100%"></div></div>
+      <span id="last-refresh-label">—</span>
+    </div>
+
+    <div id="alert-area"></div>
+    <div id="main-content">
+      <div class="empty-state">
+        <i class="ti ti-shield-bolt"></i>
+        <p>Enter your API key and faction ID above, then click <strong>Load war data</strong> to begin monitoring.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
